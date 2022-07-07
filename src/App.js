@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+const arrSelect = [
+  {
+    name: "holidays",
+  },
+  {
+    name: "my day",
+  },
+  {
+    name: "my day",
+  },
+];
 
 function App() {
+  const [newData, setnewData] = useState(arrSelect);
+
+  const handleChange = () => {};
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FormControl fullWidth>
+      <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={newData}
+        label="Age"
+        onChange={handleChange}
+      >
+        {newData.map((el) => (
+          <MenuItem value={el.value}>{el.name}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }
+
+
+
 
 export default App;
